@@ -16,11 +16,14 @@ export const sortByYear = movies =>
     [...movies].sort((a, b) => a.year - b.year);
 
 
-export const markAsWatched = (movies, id) => {
-    const movie = movies.find(movie => movie.id === id);
-    movie.watched = true;
-    return movies;
-};
+
+export const markAsWatched = (movies, id) =>
+    movies.map(movie =>
+        movie.id === id
+            ? { ...movie, watched: true }
+            : movie
+    );
+
 
 
 
